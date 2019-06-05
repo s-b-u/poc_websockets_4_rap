@@ -87,7 +87,7 @@ class HttpServletRequestInvocationHandler implements InvocationHandler {
 		case "getParameter":
 			return requestMessage.getParameters().get(args[0]);
 		case "getServletPath":
-			return this.rwtWebsocketEndpoint.getContextPath();
+			return this.rwtWebsocketEndpoint.getServletPath();
 		case "getLocales":
 			String al = this.rwtWebsocketEndpoint.getHandshakeRequest().getHeaders()
 					.getOrDefault("Accept-Language", Collections.emptyList())
@@ -118,6 +118,8 @@ class HttpServletRequestInvocationHandler implements InvocationHandler {
 			break;
 		case "getAttribute":	
 			return attributes.get(args[0]);
+		case "getContextPath":	
+			return this.rwtWebsocketEndpoint.getContextPath();
 		case "toString":
 			return this.toString();
 		default:

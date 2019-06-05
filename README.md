@@ -25,13 +25,17 @@ Run the following command from the root of the Git repository (at least JDK-8 re
 
     gradlew build run.rap-controls-demo
 
+or
+
+    gradlew build run.rap-examples-demo
+
 After the application is built and started, point your browser to http://localhost:9090.
 
-You can also run the command (at least JDK-9 required):
+You can also start the RAP E4 Demo application by: (at least JDK-9 required):
 
     gradlew build run.rap-e4-demo
 
-to start the RAP E4 Demo application, which can found at http://localhost:9090/poc/hello
+which can be found at http://localhost:9090/poc/hello
 
 You should now be able to inspect the traffic with the tool of your choice.
 As an example, how it should look like, here is a screen shoot of [Chrome DevTools][5]  
@@ -45,9 +49,10 @@ License
 [Eclipse Public License (EPL) v2.0][6]
 
 
-Known Limitations
+Known Limitations / Todos
 -------
-Currently (RAP 3.9 M3) it seems to be not possible to start the [RAP Examples Demo][8] and [RAP Workbench Demo][8] Applications due to [Bug 547895][7]
+- FileUpload not working - needs to be revisited
+- startup of [RAP Workbench Demo][8] fails due to [Bug 547895][7]
 
 
 [1]: http://eclipse.org/rap

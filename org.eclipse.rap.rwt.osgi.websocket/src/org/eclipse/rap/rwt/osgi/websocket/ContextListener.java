@@ -94,10 +94,10 @@ public class ContextListener implements ServletContextListener {
 					.filter(Objects::nonNull).findFirst();
 
 			EntryPointManager entryPointManager = applicationContext.getEntryPointManager();
-			for (String segment : entryPointManager.getServletPaths()) {
-				String path = contextName.map(n -> String.format("/%s%s", n, segment)).orElse(segment);
+			for (String servletName : entryPointManager.getServletPaths()) {
+				String path = contextName.map(n -> String.format("/%s%s", n, servletName)).orElse(servletName);
 				serverContainer.addEndpoint(ServerEndpointConfig.Builder.create(RWTWebsocketEndpoint.class, path)
-						.configurator(new RWTWebsocketEndpointConfigurator(applicationContext,segment))
+						.configurator(new RWTWebsocketEndpointConfigurator(applicationContext,contextName.orElse(""),servletName))
 						.build());
 			}
 		} catch (Exception e) {

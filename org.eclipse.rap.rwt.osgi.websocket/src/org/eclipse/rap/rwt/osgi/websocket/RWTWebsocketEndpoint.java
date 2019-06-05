@@ -38,21 +38,20 @@ import org.eclipse.rap.rwt.osgi.websocket.RWTWebsocketEndpoint.WebsocketResponse
 import org.eclipse.rap.rwt.osgi.websocket.internal.Wrapper;
 import org.eclipse.rap.rwt.service.UISession;
 
-@ServerEndpoint(
-		value = "/",
-		decoders = { WebsocketClientMessageDecoder.class },
-		encoders = { WebsocketResponseMessageEncoder.class, WebsocketErrorMessageEncoder.class })
+@ServerEndpoint(value = "/", decoders = { WebsocketClientMessageDecoder.class }, encoders = {
+		WebsocketResponseMessageEncoder.class, WebsocketErrorMessageEncoder.class })
 public class RWTWebsocketEndpoint {
 	public static final String HTTP_SESSION_ATTR = RWTWebsocketEndpoint.class.getName() + "#httpsession";
 	public static final String APP_CONTEXT_ATTR = RWTWebsocketEndpoint.class.getName() + "#appcontext";
 	public static final String CONTEXT_PATH_ATTR = RWTWebsocketEndpoint.class.getName() + "#contextpath";
+	public static final String SERVLET_PATH_ATTR = RWTWebsocketEndpoint.class.getName() + "#servletpath";
 	public static final String REQUEST_ATTR = RWTWebsocketEndpoint.class.getName() + "#handshakerequest";
 
-	//private HttpSession httpSession;
-	HandshakeRequest handshakeRequest;
+	private HandshakeRequest handshakeRequest;
 	private ApplicationContextImpl applicationContext;
 
-	String contextPath;
+	private String contextPath;
+	private String servletPath;
 
 	private UISession uiSession;
 
@@ -64,11 +63,10 @@ public class RWTWebsocketEndpoint {
 
 	@OnOpen
 	public void onOpen(Session session, EndpointConfig config) throws IOException {
-		//httpSession = (HttpSession) config.getUserProperties().get(HTTP_SESSION_ATTR);
 		handshakeRequest = (HandshakeRequest) config.getUserProperties().get(REQUEST_ATTR);
 		applicationContext = (ApplicationContextImpl) config.getUserProperties().get(APP_CONTEXT_ATTR);
 		contextPath = (String) config.getUserProperties().get(CONTEXT_PATH_ATTR);
-		//session.setMaxIdleTimeout(Math.max(0, 1000 * httpSession.getMaxInactiveInterval()));
+		servletPath = (String) config.getUserProperties().get(SERVLET_PATH_ATTR);
 	}
 
 	@OnClose
@@ -84,8 +82,7 @@ public class RWTWebsocketEndpoint {
 	}
 
 	@OnMessage
-	public void onMessage(Session session, WebsocketRequestMessage message)
-			throws Exception {
+	public void onMessage(Session session, WebsocketRequestMessage message) throws Exception {
 
 		WebsocketResponseMessage responseMessage = new WebsocketResponseMessage(message.getRequestId());
 
@@ -122,7 +119,6 @@ public class RWTWebsocketEndpoint {
 		} finally {
 			lock.unlock();
 		}
-		
 
 	}
 
@@ -153,6 +149,10 @@ public class RWTWebsocketEndpoint {
 
 	public String getContextPath() {
 		return contextPath;
+	}
+
+	public String getServletPath() {
+		return servletPath;
 	}
 
 	public static class WebsocketClientMessageDecoder implements Decoder.TextStream<WebsocketRequestMessage> {
