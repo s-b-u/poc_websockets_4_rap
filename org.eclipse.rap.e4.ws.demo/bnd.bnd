@@ -60,5 +60,3 @@ Bundle-Version: 3.9.1.${tstamp}
 -includeresource.xmi: Application.e4xmi
 	
 -contract: !JavaServlet,* #Bundle org.eclipse.jetty.osgi-servlet-api:3.1.0.M3 does not provide the contract 
--runfw: org.eclipse.osgi;version='[3.0.0,4.0.0)'
--runee: JavaSE-1.8
