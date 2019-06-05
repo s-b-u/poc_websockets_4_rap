@@ -21,15 +21,15 @@ Git Repository Structure
 Run the RAP Demo Applications
 --------------------
 
-Run the following command from the root of the Git repository:
+Run the following command from the root of the Git repository (at least JDK-8 required):
 
-    gradlew run.rap-controls-demo
+    gradlew build run.rap-controls-demo
 
 After the application is built and started, point your browser to http://localhost:9090.
 
-You can also run the command:
+You can also run the command (at least JDK-9 required):
 
-    gradlew run.rap-e4-demo
+    gradlew build run.rap-e4-demo
 
 to start the RAP E4 Demo application, which can found at http://localhost:9090/poc/hello
 

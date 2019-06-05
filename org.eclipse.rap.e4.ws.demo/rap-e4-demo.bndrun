@@ -1,5 +1,5 @@
 -runfw: org.eclipse.osgi;version='[3.0.0,4.0.0)'
--runee: JavaSE-11
+-runee: JavaSE-9
 -runprovidedcapabilities: ${native_capability}
 
 -resolve.effective: active
