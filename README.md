@@ -13,7 +13,7 @@ Git Repository Structure
 |-------------|-------------------------------------------------------------|
 | `cnf/`  | bnd workspace                                         |
 | `org.eclipse.jetty.osgi.httpservice.websocket/`    | replacement for `org.eclipse.jetty.osgi.httpservice` to enable jsr356 websockets                                       
-| `org.eclipse.rap.e4.ws.demo/` | copied from [RAP E4 Demo][2] because of [Bug 547896][3]|
+| `org.eclipse.rap.e4.ws.demo/` | copied from [RAP E4 Demo][2] because of [RAP 547896][3]|
 | `org.eclipse.rap.rwt.osgi.websocket/`   | main project to wrap the client-server communication within a websocket|
 
 
@@ -52,7 +52,8 @@ License
 Known Limitations / Todos
 -------
 - FileUpload not working - needs to be revisited
-- startup of [RAP Workbench Demo][8] fails due to [Bug 547895][7]
+- startup of [RAP Workbench Demo][8] fails due to [RAP 547895][7]
+- bundle load order matters for `o.e.j.osgi.httpservice.websocket` and `o.e.j.websocket.javax.websocket.server` because of the ServiceLoader runtime dependency, which can't be expressed by Require-Capability @see also [Jetty 3543][9]
 
 
 [1]: http://eclipse.org/rap
@@ -63,3 +64,4 @@ Known Limitations / Todos
 [6]: https://www.eclipse.org/legal/epl-2.0/
 [7]: https://bugs.eclipse.org/bugs/show_bug.cgi?id=547895
 [8]: https://www.eclipse.org/rap/demos/
+[9]: https://github.com/eclipse/jetty.project/issues/3543
