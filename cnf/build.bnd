@@ -1,0 +1,61 @@
+# Configure Repositories
+-plugin.1.R7.API: \
+	aQute.bnd.repository.maven.pom.provider.BndPomRepository; \
+		releaseUrls=https://repo.maven.apache.org/maven2/; \
+		revision=org.osgi.enroute:osgi-api:7.0.0; \
+		readOnly=true; \
+		name="OSGi R7 API"
+
+-plugin.2.Central: \
+	aQute.bnd.repository.maven.provider.MavenBndRepository; \
+		releaseUrl=https://repo.maven.apache.org/maven2/; \
+		index=${.}/central.maven; \
+		readOnly=true; \
+		name="Maven Central"
+		
+-plugin.3.jetty: aQute.bnd.repository.p2.provider.P2Repository; \
+    name = "Jetty 9.x"; \
+    url = "https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.18.v20190429/"
+
+-plugin.4.rap: aQute.bnd.repository.p2.provider.P2Repository; \
+    name = "RAP"; \
+    url = "http://download.eclipse.org/rt/rap/3.9/M3-20190528-1929"
+    
+-plugin.4.rapE4: aQute.bnd.repository.p2.provider.P2Repository; \
+    name = "RAP E4"; \
+    url = "http://download.eclipse.org/rt/rap/3.9/e4/M3-20190528-1929"
+
+
+-releaserepo: Release
+-baselinerepo: Release
+
+# Always use contracts
+-sources: true
+-contract: *
+
+javac.source: 1.8
+javac.target: 1.8
+
+
+# Set Git revision information in the manifests of built bundles
+Git-Descriptor:           ${system-allow-fail;git describe --dirty --always}
+Git-SHA:                  ${system-allow-fail;git rev-list -1 HEAD}
+
+# JUnit
+junit: org.apache.servicemix.bundles.junit; version=latest
+mockito: org.mockito.mockito-core; version=latest
+mockito-deps: org.objenesis; version=latest,\
+  net.bytebuddy.byte-buddy; version=latest,\
+  net.bytebuddy.byte-buddy-agent; version=latest
+  
+-buildpath.osgi: \
+	osgi.annotation;version=7.0,\
+	osgi.cmpn;version=7.0,\
+	osgi.core;version=7.0
+	
+-standalone: true   
+
+-includeresource.resources: {resources}
+-includeresource.all: -resources
+
+Bundle-License: LICENSE-2.0;link=http://www.apache.org/licenses/LICENSE-2.0.txt,EPL-2.0;link=https://www.eclipse.org/legal/epl-2.0/

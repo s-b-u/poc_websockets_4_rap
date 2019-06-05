@@ -1,0 +1,14 @@
+-buildpath: \
+	org.eclipse.jetty.server;version=9.4.18,\
+	org.eclipse.jetty.websocket.javax.websocket.server,\
+	org.eclipse.jetty.servlet;version=9.4.18,\
+	org.eclipse.jetty.osgi-servlet-api,\
+	org.eclipse.jetty.websocket.javax.websocket,\
+	org.eclipse.jetty.util;version=9.4,\
+	org.eclipse.jetty.http
+	
+-privatepackage: org.eclipse.jetty.osgi.httpservice.webservice
+
+Import-Package: \
+	org.eclipse.equinox.http.servlet,\
+	*

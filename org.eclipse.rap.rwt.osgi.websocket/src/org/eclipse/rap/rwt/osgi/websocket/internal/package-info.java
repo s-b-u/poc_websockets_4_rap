@@ -1,0 +1,1 @@
+package org.eclipse.rap.rwt.osgi.websocket.internal;

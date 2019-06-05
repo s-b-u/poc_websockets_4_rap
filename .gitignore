@@ -1,0 +1,8 @@
+.settings/
+.classpath
+.gradle/
+cache/
+bin/
+generated/
+.metadata/
+**/~*

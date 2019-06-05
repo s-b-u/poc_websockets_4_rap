@@ -1,0 +1,18 @@
+-buildpath: \
+	org.eclipse.rap.rwt.osgi,\
+	org.eclipse.jetty.osgi-servlet-api,\
+	org.eclipse.rap.rwt,\
+	org.apache.servicemix.bundles.javax-websocket-api,\
+	org.eclipse.jetty.servlet,\
+	org.eclipse.jetty.server,\
+	org.eclipse.jetty.websocket.javax.websocket,\
+	org.eclipse.jetty.websocket.javax.websocket.server,\
+	yasson,\
+	jakarta.json-api,\
+	jakarta.json.bind-api,\
+	org.projectlombok:lombok,\
+	org.glassfish.javax.json,\
+	org.eclipse.jetty.websocket.servlet,\
+	org.eclipse.core.runtime,\
+	org.eclipse.equinox.event
+
