@@ -7,11 +7,6 @@
 	org.eclipse.jetty.server,\
 	org.eclipse.jetty.websocket.javax.websocket,\
 	org.eclipse.jetty.websocket.javax.websocket.server,\
-	yasson,\
-	jakarta.json-api,\
-	jakarta.json.bind-api,\
-	org.projectlombok:lombok,\
-	org.glassfish.javax.json,\
 	org.eclipse.jetty.websocket.servlet,\
 	org.eclipse.core.runtime,\
 	org.eclipse.equinox.event
