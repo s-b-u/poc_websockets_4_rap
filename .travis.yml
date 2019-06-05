@@ -8,6 +8,6 @@ jdk:
 before_install:
   - chmod +x gradlew
   
-install: ./gradlew --version
+install: ./gradlew build
 
 script: ./gradlew --continue
