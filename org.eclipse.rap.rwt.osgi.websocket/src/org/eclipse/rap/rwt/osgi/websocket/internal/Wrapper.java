@@ -23,10 +23,7 @@ public class Wrapper {
 	private static <T> T getProxy(Class<T> clazz, InvocationHandler invocationHandler)
 			throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException,
 			NoSuchMethodException, SecurityException {
-		Class<?> proxyClass = Proxy.getProxyClass(clazz.getClassLoader(), clazz);
-		return (T) proxyClass
-				.getConstructor(InvocationHandler.class)
-				.newInstance(invocationHandler);
+		return  (T) Proxy.newProxyInstance(clazz.getClassLoader(), new Class[] {clazz}, invocationHandler);
 	}
 
 	public static HttpServletRequest createHttpServletRequest(RWTWebsocketEndpoint rwtWebsocketEndpoint,
