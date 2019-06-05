@@ -42,7 +42,7 @@ As an example, how it should look like, here is a screen shoot of [Chrome DevToo
 License
 -------
 
-[Eclipse Public License (EPL) v2.0] [6]
+[Eclipse Public License (EPL) v2.0][6]
 
 
 Known Limitations
