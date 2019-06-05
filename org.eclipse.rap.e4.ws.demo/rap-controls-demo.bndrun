@@ -1,0 +1,105 @@
+-runfw: org.eclipse.osgi;version='[3.0.0,4.0.0)'
+-runee: JavaSE-11
+-runprovidedcapabilities: ${native_capability}
+
+-resolve.effective: active
+
+-runproperties: \
+	osgi.console=,\
+	osgi.bundles.defaultStartLevel=4,\
+	osgi.noShutdown=true,\
+	org.osgi.service.log.admin.loglevel=DEBUG,\
+	eclipse.ignoreApp=true,\
+	jetty.http.port=9090,\
+	org.osgi.service.http.port=8080,\
+	jetty.home.bundle=org.eclipse.jetty.osgi.boot,\
+	java.util.logging.config.file=logging.properties,\
+	launch.activation.eager=true,\
+	clearPersistedState,\
+	org.eclipse.rap.rwt.developmentMode=true,\
+	org.eclipse.rap.rwt.osgi.websocket.active=true
+
+-runrequires: \
+	bnd.identity;id='org.apache.aries.spifly.dynamic.bundle',\
+	bnd.identity;id='org.apache.servicemix.bundles.javax-websocket-api',\
+	bnd.identity;version='3.1.0';id='org.eclipse.jetty.osgi-servlet-api',\
+	bnd.identity;id='org.eclipse.jetty.websocket.javax.websocket.server',\
+	bnd.identity;id='org.eclipse.jetty.osgi.boot',\
+	bnd.identity;id='org.eclipse.equinox.http.registry',\
+	bnd.identity;id='org.eclipse.equinox.console',\
+	bnd.identity;id='org.eclipse.rap.rwt.osgi',\
+	bnd.identity;id='org.eclipse.rap.rwt.osgi.websocket',\
+	bnd.identity;id='org.eclipse.jetty.osgi.httpservice.websocket',\
+	bnd.identity;id='org.eclipse.equinox.cm',\
+	bnd.identity;id='org.apache.felix.webconsole',\
+	osgi.identity;filter:='(&(osgi.identity=org.objectweb.asm)(version>=7.1.0))',\
+	bnd.identity;id='org.eclipse.rap.demo.controls',\
+	osgi.identity;filter:='(&(osgi.identity=org.eclipse.core.jobs)(version>=3.10.400))
+
+
+
+
+-runprogramargs: -clearPersistedState
+
+#-runpath: org.eclipse.equinox.launcher; version=latest
+-runtrace: false
+
+-augment.org.eclipse.rap.rwt.osgi = \
+        org.eclipse.rap.rwt.osgi; \
+                capability:='osgi.service; \
+                    objectClass:List<String>=org.eclipse.rap.rwt.osgi.ApplicationReference
+                    
+-runbundles: \
+	org.apache.aries.spifly.dynamic.bundle;version='[1.2.1,1.2.2)',\
+	org.apache.felix.gogo.runtime;version='[1.1.0,1.1.1)',\
+	org.apache.felix.gogo.shell;version='[1.1.0,1.1.1)',\
+	org.apache.felix.scr;version='[2.1.14,2.1.15)',\
+	org.apache.servicemix.bundles.javax-websocket-api;version='[1.1.0,1.1.1)',\
+	org.eclipse.core.commands;version='[3.9.400,3.9.401)',\
+	org.eclipse.equinox.common;version='[3.10.400,3.10.401)',\
+	org.eclipse.equinox.http.registry;version='[1.1.700,1.1.701)',\
+	org.eclipse.equinox.http.servlet;version='[1.6.100,1.6.101)',\
+	org.eclipse.jetty.client;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.deploy;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.http;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.io;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.osgi-servlet-api;version='[3.1.0,3.1.1)',\
+	org.eclipse.jetty.osgi.boot;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.security;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.server;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.servlet;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.util;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.webapp;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.api;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.client;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.common;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.javax.websocket;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.javax.websocket.server;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.server;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.websocket.servlet;version='[9.4.18,9.4.19)',\
+	org.eclipse.jetty.xml;version='[9.4.18,9.4.19)',\
+	org.eclipse.osgi.services;version='[3.8.0,3.8.1)',\
+	org.eclipse.osgi.util;version='[3.5.200,3.5.201)',\
+	org.eclipse.rap.jface;version='[3.9.0,3.9.1)',\
+	org.eclipse.jetty.osgi.httpservice.websocket;version=snapshot,\
+	org.eclipse.rap.rwt;version='[3.9.0,3.9.1)',\
+	org.eclipse.rap.rwt.osgi;version='[3.9.0,3.9.1)',\
+	org.eclipse.rap.rwt.osgi.websocket;version=snapshot,\
+	org.eclipse.equinox.cm;version='[1.4.0,1.4.1)',\
+	org.apache.commons.fileupload;version='[1.3.2,1.3.3)',\
+	org.apache.commons.io;version='[2.6.0,2.6.1)',\
+	org.apache.felix.webconsole;version='[4.3.12,4.3.13)',\
+	org.objectweb.asm;version='[7.1.0,7.1.1)',\
+	org.eclipse.core.jobs;version='[3.10.400,3.10.401)',\
+	org.eclipse.equinox.console;version='[1.3.300,1.3.301)',\
+	org.eclipse.equinox.registry;version='[3.8.400,3.8.401)',\
+	org.eclipse.rap.demo.controls;version='[3.9.0,3.9.1)',\
+	org.eclipse.rap.nebula.widgets.grid;version='[3.9.0,3.9.1)',\
+	org.eclipse.rap.nebula.widgets.richtext;version='[3.9.0,3.9.1)'
+-ignore-standalone: 
+-runrepos: \
+	Workspace,\
+	OSGi R7 API,\
+	Maven Central,\
+	Jetty 9.x,\
+	RAP
