@@ -89,6 +89,8 @@ public class ContextListener implements ServletContextListener {
 			Collection<ServiceReference<ApplicationConfiguration>> serviceReferences = bundleContext
 					.getServiceReferences(ApplicationConfiguration.class,
 							"(" + "component.name" + "=" + clazz.getName() + ")");
+			
+			//FIXME @see org.eclipse.rap.examples.internal.Activator#start contextPath=rapdemo vs PROPERTY_CONTEXT_NAME=contextName (!!!)
 			Optional<String> contextName = serviceReferences.stream()
 					.map(r -> (String) r.getProperty(ApplicationLauncher.PROPERTY_CONTEXT_NAME))
 					.filter(Objects::nonNull).findFirst();
