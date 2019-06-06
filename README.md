@@ -54,8 +54,8 @@ Known Limitations / Todos
 - FileUpload not working - needs to be revisited
 - startup of [RAP Workbench Demo][8] fails due to [RAP 547895][7]
 - bundle load order matters for<br>
-`o.e.j.osgi.httpservice.websocket` and `o.e.j.websocket.javax.websocket.server`  because of the ServiceLoader runtime dependency, which can't be expressed by Require-Capability<br/>see also [Jetty 3543][9]
-- [OSGI Http Whiteboard Spec][10] lacks support for websockets  hopefully it shows up in future releases<br/>see also [Liferay Doc][11] and [Liferay Git][12]   
+`o.e.j.osgi.httpservice.websocket` and `o.e.j.websocket.javax.websocket.server`<br/>because of the ServiceLoader runtime dependency, which can't be expressed by Require-Capability<br/>see also [Jetty 3543][9]
+- [OSGI Http Whiteboard Spec][10] lacks support for websockets<br/>hopefully it shows up in future releases<br/>see also [Liferay Doc][11] and [Liferay Git][12]   
 
 
 [1]: http://eclipse.org/rap
