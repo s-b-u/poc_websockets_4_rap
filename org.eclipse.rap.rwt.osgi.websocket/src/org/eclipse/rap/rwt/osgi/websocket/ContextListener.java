@@ -32,14 +32,10 @@ import org.osgi.service.http.whiteboard.propertytypes.HttpWhiteboardListener;
 import org.osgi.service.log.Logger;
 import org.osgi.service.log.LoggerFactory;
 
-
-@Component(reference = @Reference(
-		name = "app.references",
-		service = ApplicationReference.class,
-		cardinality = ReferenceCardinality.AT_LEAST_ONE,
-		policy = ReferencePolicy.DYNAMIC))
-@HttpWhiteboardContextSelect(
-		value = "(" + HTTP_WHITEBOARD_CONTEXT_NAME + "=org_eclipse_rap_rwt_osgi_internal_HttpContextWrapper*)")
+@Component(reference = @Reference(name = "app.references", service = ApplicationReference.class, cardinality = ReferenceCardinality.AT_LEAST_ONE, policy = ReferencePolicy.DYNAMIC))
+@HttpWhiteboardContextSelect(value = "(|(" + HTTP_WHITEBOARD_CONTEXT_NAME
+		+ "=org_eclipse_rap_rwt_osgi_internal_HttpContextWrapper*)(" + HTTP_WHITEBOARD_CONTEXT_NAME
+		+ "=org_eclipse_rap_ui_internal_RAPHttpContext*))")
 @HttpWhiteboardListener
 public class ContextListener implements ServletContextListener {
 
@@ -48,10 +44,10 @@ public class ContextListener implements ServletContextListener {
 
 	@Activate
 	private BundleContext bundleContext;
-	
+
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
-		
+
 		if (!RWTProperties.getBooleanProperty("org.eclipse.rap.rwt.osgi.websocket.active", true)) {
 			logger.info("RWT Websocket support is disabled");
 			return;
@@ -64,8 +60,7 @@ public class ContextListener implements ServletContextListener {
 			logger.warn("RWT ApplicationContext not populated so far - giving up");
 			return;
 		}
- 
-		
+
 		ServletContext root = servletContext.getContext("/");
 		ServerContainer serverContainer = (ServerContainer) root.getAttribute(ServerContainer.class.getName());
 
@@ -80,7 +75,8 @@ public class ContextListener implements ServletContextListener {
 			resourceManager.register(resource, this.getClass().getClassLoader().getResourceAsStream("/js/" + resource));
 			applicationContext.getStartupPage().addJsLibrary(resourceManager.getLocation(resource));
 
-			// FIXME maybe ApplicationContextImpl#getContextName or ApplicationContextImpl#getApplicationConfiguration
+			// FIXME maybe ApplicationContextImpl#getContextName or
+			// ApplicationContextImpl#getApplicationConfiguration
 			Field field = ApplicationContextImpl.class.getDeclaredField("applicationConfiguration");
 			field.setAccessible(true);
 			ApplicationConfiguration configuration = (ApplicationConfiguration) field.get(applicationContext);
@@ -89,8 +85,9 @@ public class ContextListener implements ServletContextListener {
 			Collection<ServiceReference<ApplicationConfiguration>> serviceReferences = bundleContext
 					.getServiceReferences(ApplicationConfiguration.class,
 							"(" + "component.name" + "=" + clazz.getName() + ")");
-			
-			//FIXME @see org.eclipse.rap.examples.internal.Activator#start contextPath=rapdemo vs PROPERTY_CONTEXT_NAME=contextName (!!!)
+
+			// FIXME @see org.eclipse.rap.examples.internal.Activator#start
+			// contextPath=rapdemo vs PROPERTY_CONTEXT_NAME=contextName (!!!)
 			Optional<String> contextName = serviceReferences.stream()
 					.map(r -> (String) r.getProperty(ApplicationLauncher.PROPERTY_CONTEXT_NAME))
 					.filter(Objects::nonNull).findFirst();
@@ -99,7 +96,8 @@ public class ContextListener implements ServletContextListener {
 			for (String servletName : entryPointManager.getServletPaths()) {
 				String path = contextName.map(n -> String.format("/%s%s", n, servletName)).orElse(servletName);
 				serverContainer.addEndpoint(ServerEndpointConfig.Builder.create(RWTWebsocketEndpoint.class, path)
-						.configurator(new RWTWebsocketEndpointConfigurator(applicationContext,contextName.orElse(""),servletName))
+						.configurator(new RWTWebsocketEndpointConfigurator(applicationContext, contextName.orElse(""),
+								servletName))
 						.build());
 			}
 		} catch (Exception e) {

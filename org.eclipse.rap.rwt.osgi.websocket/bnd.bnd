@@ -9,5 +9,10 @@
 	org.eclipse.jetty.websocket.javax.websocket.server,\
 	org.eclipse.jetty.websocket.servlet,\
 	org.eclipse.core.runtime,\
-	org.eclipse.equinox.event
+	org.eclipse.equinox.event,\
+	org.eclipse.jetty.osgi.httpservice,\
+	org.eclipse.jetty.http,\
+	org.eclipse.rap.ui,\
+	org.eclipse.rap.ui.workbench,\
+	org.eclipse.equinox.http.servlet
 
