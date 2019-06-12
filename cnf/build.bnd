@@ -19,11 +19,11 @@
 
 -plugin.4.rap: aQute.bnd.repository.p2.provider.P2Repository; \
     name = "RAP"; \
-    url = "http://download.eclipse.org/rt/rap/3.9/M3-20190528-1929"
+    url = "https://download.eclipse.org/rt/rap/nightly/runtime"
     
--plugin.4.rapE4: aQute.bnd.repository.p2.provider.P2Repository; \
+-plugin.5.rapE4: aQute.bnd.repository.p2.provider.P2Repository; \
     name = "RAP E4"; \
-    url = "http://download.eclipse.org/rt/rap/3.9/e4/M3-20190528-1929"
+    url = "https://download.eclipse.org/rt/rap/nightly/runtime.e4/"
 
 
 -releaserepo: Release
@@ -59,5 +59,5 @@ mockito-deps: org.objenesis; version=latest,\
 -includeresource.all: -resources
 
 Bundle-License: LICENSE-2.0;link=http://www.apache.org/licenses/LICENSE-2.0.txt,EPL-2.0;link=https://www.eclipse.org/legal/epl-2.0/
-Bundle-Version: 1.0.0.${tstamp}
+Bundle-Version: 1.1.0.${tstamp}
 Import-Package: *
