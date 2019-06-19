@@ -19,11 +19,11 @@
 
 -plugin.4.rap: aQute.bnd.repository.p2.provider.P2Repository; \
     name = "RAP"; \
-    url = "https://download.eclipse.org/rt/rap/nightly/runtime"
+    url = "http://download.eclipse.org/rt/rap/3.9"
     
 -plugin.5.rapE4: aQute.bnd.repository.p2.provider.P2Repository; \
     name = "RAP E4"; \
-    url = "https://download.eclipse.org/rt/rap/nightly/runtime.e4/"
+    url = "http://download.eclipse.org/rt/rap/3.9/e4"
 
 
 -releaserepo: Release
