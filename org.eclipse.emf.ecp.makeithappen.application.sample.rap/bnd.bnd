@@ -1,0 +1,29 @@
+-buildpath: \
+	org.eclipse.core.runtime,\
+	org.eclipse.equinox.registry,\
+	org.eclipse.core.commands,\
+	org.eclipse.equinox.app,\
+	org.eclipse.equinox.common,\
+	org.eclipse.rap.ui,\
+	org.eclipse.rap.ui.workbench,\
+	org.eclipse.rap.ui.views,\
+	org.eclipse.rap.jface,\
+	org.eclipse.rap.rwt,\
+	org.eclipse.emf.common,\
+	org.eclipse.emf.ecore,\
+	org.eclipse.emf.ecp.makeithappen.model.edit,\
+	org.eclipse.emf.ecp.ui.view.swt,\
+	org.eclipse.emf.ecp.edit,\
+	org.eclipse.emf.ecp.ui.view,\
+	org.eclipse.emf.ecp.view.context,\
+	org.eclipse.emf.ecp.makeithappen.model,\
+	org.eclipse.rap.demo
+
+singleton: true
+
+	
+	
+	
+	
+	
+	

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="org.eclipse.emf.ecp.makeithappen.application.sample.rap.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="org.eclipse.emf.ecp.makeithappen.application.sample.rap.Perspective"
+            icon="icons/bricks.png"
+            id="TestApp.perspective"
+            name="Perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="org.eclipse.emf.ecp.makeithappen.application.sample.rap.View"
+            icon="icons/bricks.png"
+            id="TestApp.view"
+            name="View">
+      </view>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="org.eclipse.emf.ecp.makeithappen.application.sample.rap.application"
+            name="MakeItHappen Sample RAP Product">
+         <property
+               name="appName"
+               value="MakeItHappen Sample RAP Product">
+         </property>
+         <property
+               name="windowImages"
+               value="icons/bricks.png">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.rap.ui.entrypoint">
+      <entrypoint
+            applicationId="org.eclipse.emf.ecp.makeithappen.application.sample.rap.application"
+            id="org.eclipse.emf.ecp.makeithappen.application.sample.rap.entrypoint1"
+            path="/rap">
+      </entrypoint>
+   </extension>
+
+</plugin>
