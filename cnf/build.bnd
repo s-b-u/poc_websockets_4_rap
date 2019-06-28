@@ -24,6 +24,27 @@
 -plugin.5.rapE4: aQute.bnd.repository.p2.provider.P2Repository; \
     name = "RAP E4"; \
     url = "http://download.eclipse.org/rt/rap/3.9/e4"
+    
+-plugin.6.emf: aQute.bnd.repository.p2.provider.P2Repository; \
+    name = "EMF"; \
+    url = "http://download.eclipse.org/modeling/emf/emf/builds/milestone/latest"
+    
+-plugin.7.ecpRT: aQute.bnd.repository.p2.provider.P2Repository; \
+    name = "ECP RT"; \
+    url = "http://download.eclipse.org/ecp/releases/releases_target_121/1210/"
+    
+#-plugin.8.ecp: aQute.bnd.repository.p2.provider.P2Repository; \
+#    name = "ECP"; \
+#    url = "http://download.eclipse.org/ecp/releases/releases_121/1210/"
+
+#-plugin.9.ecp: aQute.bnd.repository.p2.provider.P2Repository; \
+#    name = "Eclipse RCP"; \
+#    url = "https://download.eclipse.org/eclipse/updates/4.12"
+    
+#-plugin.10.ecp: aQute.bnd.repository.p2.provider.P2Repository; \
+#    name = "Eclipse"; \
+#    url = "https://download.eclipse.org/releases/latest/"
+    
 
 
 -releaserepo: Release
@@ -57,6 +78,14 @@ mockito-deps: org.objenesis; version=latest,\
 
 -includeresource.resources: {resources}
 -includeresource.all: -resources
+
+# FIXME https://bnd.bndtools.org/instructions/runbundles.html - doesn't seem to work with version 4.2
+-runbundles+: \
+    org.apache.aries.spifly.dynamic.bundle;startlevel=1, \
+    org.eclipse.jetty.websocket.javax.websocket.server;startlevel=2, \
+    org.eclipse.jetty.server;startlevel=3, \
+    org.eclipse.jetty.osgi.httpservice.websocket;startlevel=4, \
+    *;startlevel=10
 
 Bundle-License: LICENSE-2.0;link=http://www.apache.org/licenses/LICENSE-2.0.txt,EPL-2.0;link=https://www.eclipse.org/legal/epl-2.0/
 Bundle-Version: 1.1.0.${tstamp}
