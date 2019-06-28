@@ -14,7 +14,8 @@ Git Repository Structure
 | `cnf/`  | bnd workspace                                         |
 | `org.eclipse.jetty.osgi.httpservice.websocket/`    | replacement for `org.eclipse.jetty.osgi.httpservice` to enable jsr356 websockets                                       
 | `org.eclipse.rap.rwt.osgi.websocket/`   | main project to wrap the client-server communication within a websocket|
-
+|`org.eclipse.emf.ecp.makeithappen.application.sample.rap`|EMF Forms RAP example [makeithappen][13]
+|`org.eclipse.emf.ecp.makeithappen.application.sample.rap.e4`|contributes a EMF Forms Part to RAP E4 Demo
 
 
 Run the RAP Demo Applications
@@ -22,17 +23,17 @@ Run the RAP Demo Applications
 
 Run the following command from the root of the Git repository (at least JDK-8 required):
 
-    gradlew build resolve.rap-controls-demo run.rap-controls-demo
+    gradlew build run.rap-controls-demo
 
 or
 
-    gradlew build resolve.rap-examples-demo run.rap-examples-demo
+    gradlew build run.rap-examples-demo
 
 After the application is built and started, point your browser to http://localhost:9090.
 
 The workbench based demos could be run by:
 
-    gradlew build resolve.rap-workbench-demo run.rap-workbench-demo
+    gradlew build run.rap-workbench-demo
 
 which provides the entrypoints
 - http://localhost:9090
@@ -44,9 +45,20 @@ which provides the entrypoints
 
 You can also start the RAP E4 Demo application (at least JDK-9 required) by:
 
-    gradlew build resolve.rap-e4-demo run.rap-e4-demo
+    gradlew build run.rap-e4-demo
 
 which can be found at http://localhost:9090/hello
+
+Last but not least, there are also examples for EMF Forms on RAP E3 and RAP E4 respectively. You can start them by:
+
+    gradlew build run.rap-emf-demo
+
+available at  http://localhost:9090/rap
+and
+
+    gradlew build run.rap-e4-emf-demo
+
+available at  http://localhost:9090/hello.
 
 You should now be able to inspect the traffic with the tool of your choice.
 As an example, how it should look like, here is a screen shoot of [Chrome DevTools][5]  
@@ -80,3 +92,4 @@ Known Limitations / Todos
 [10]: https://osgi.org/specification/osgi.cmpn/7.0.0/service.http.whiteboard.html
 [11]: https://dev.liferay.com/de/develop/tutorials/-/knowledge_base/7-0/liferay-websocket-whiteboard
 [12]: https://github.com/liferay/liferay-portal/tree/master/modules/apps/websocket
+[13]: https://eclipsesource.com/blogs/tutorials/getting-started-with-emf-forms/
