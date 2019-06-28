@@ -18,7 +18,7 @@
 	jetty.http.port=9090,\
 	org.osgi.service.http.port=9090,\
 	jetty.home.bundle=org.eclipse.jetty.osgi.boot,\
-	launch.activation.eager=false,\
+	launch.activation.eager=true,\
 	org.eclipse.rap.rwt.developmentMode=true,\
 	org.eclipse.rap.rwt.osgi.websocket.active=true,\
 	osgi.framework.useSystemProperties=true
@@ -30,7 +30,6 @@
 	bnd.identity;version='3.1.0';id='org.eclipse.jetty.osgi-servlet-api',\
 	bnd.identity;id='org.eclipse.jetty.websocket.javax.websocket.server',\
 	bnd.identity;id='org.eclipse.jetty.osgi.boot',\
-	bnd.identity;id='org.eclipse.equinox.http.registry',\
 	bnd.identity;id='org.eclipse.equinox.console',\
 	bnd.identity;id='org.eclipse.e4.ui.workbench.addons.swt',\
 	bnd.identity;id='org.eclipse.rap.rwt.osgi',\
@@ -46,7 +45,6 @@
 -ignore-standalone: 
 -runprogramargs: -clearPersistedState
 
-#-runpath: org.eclipse.equinox.launcher; version=latest
 -runtrace: false
 
 -augment.org.eclipse.rap.rwt.osgi = \
@@ -82,7 +80,6 @@
 	org.eclipse.emf.common;version='[2.16.0,2.16.1)',\
 	org.eclipse.emf.ecore;version='[2.18.0,2.18.1)',\
 	org.eclipse.equinox.common;version='[3.10.400,3.10.401)',\
-	org.eclipse.equinox.http.registry;version='[1.1.700,1.1.701)',\
 	org.eclipse.equinox.http.servlet;version='[1.6.100,1.6.101)',\
 	org.eclipse.equinox.preferences;version='[3.7.400,3.7.401)',\
 	org.eclipse.jetty.client;version='[9.4.18,9.4.19)',\
